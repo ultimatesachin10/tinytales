@@ -13,8 +13,8 @@ const App = () => {
   
   const fetchData = async () => {
     const response = await axios.get('https://www.terriblytinytales.com/test.txt');
+  
     const text = response.data;
-    
     const wordCounts = text
       .split(/\s+/)
       .reduce((counts, word) => {
