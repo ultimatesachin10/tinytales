@@ -33,7 +33,7 @@ const App = () => {
     <div>
       <button onClick={fetchData}>Submit</button>
       {histogramData.length > 0 && (
-        <>
+        <div>
           <BarChart width={800} height={400} data={histogramData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="word" />
@@ -42,7 +42,7 @@ const App = () => {
             <Bar dataKey="count" fill="#8884d8" />
           </BarChart>
           <button onClick={handleExport}>Export</button>
-        </>
+        </div>
       )}
     </div>
   );
