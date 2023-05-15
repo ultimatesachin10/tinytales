@@ -1,45 +1,34 @@
 <h1>Source Code</h1>
 <code>  
 import React, { useState } from 'react';
-
 import axios from 'axios';
-
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-
 import { saveAs } from 'file-saver';
-
 const App = () => {
   const [histogramData, setHistogramData] = useState([]);
-  
   const fetchData = async () => {
     const response = await axios.get('https://www.terriblytinytales.com/test.txt');
-  
     const text = response.data;
     const wordCounts = text
       .split(/\s+/)
       .reduce((counts, word) => {
         counts[word] = (counts[word] || 0) + 1;
         return counts;
-      }, {});
-    
+      }, {}); 
     const sortedWordCounts = Object.entries(wordCounts)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 20);
-    
     const histogramData = sortedWordCounts.map(([word, count]) => ({
       word,
       count,
     }));
-    
     setHistogramData(histogramData);
   };
-  
   const handleExport = () => {
     const csv = 'Word,Count\n' + histogramData.map(({ word, count }) => `${word},${count}`).join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
     saveAs(blob, 'histogram.csv');
   };
-  
   return (
     <div>
       <button onClick={fetchData}>Submit</button>
@@ -58,7 +47,6 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
 </code>
 <br></br>
