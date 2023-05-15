@@ -1,5 +1,5 @@
 <h1>Source Code</h1>
-<p>  
+<code>  
 import React, { useState } from 'react';
 
 import axios from 'axios';
@@ -60,7 +60,8 @@ const App = () => {
 };
 
 export default App;
-</p>
+</code>
+<br></br>
 <p>
   I use Axios to fetch the text file and parse it using JavaScript functions like split(), reduce(), and sort(). I am then use Recharts to create a histogram chart and FileSaver.js to download a CSV file of the histogram data. When the "Submit" button is clicked, the fetchData() function is called, which fetches the data, parses it, and sets the histogram data in state. When the histogram data is available,
 </p>
